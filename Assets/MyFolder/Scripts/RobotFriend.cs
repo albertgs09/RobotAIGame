@@ -48,7 +48,6 @@ public class RobotFriend : MonoBehaviour
         {
             target = null;
             Debug.Log("No target");
-            Debug.Log(target);
         }
     }
 }

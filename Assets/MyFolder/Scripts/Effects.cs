@@ -8,7 +8,6 @@ public class Effects : MonoBehaviour
         
     public void ChooseEffect(int num, Transform target)
     {
-        Debug.Log("Particle effect");
         GameObject effect = Instantiate(effects[num], target.position, target.rotation);
         Destroy(effect, 3f);
     }
