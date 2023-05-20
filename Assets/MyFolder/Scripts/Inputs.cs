@@ -37,7 +37,6 @@ public class Inputs : MonoBehaviour
     private void TakeOverSphere()
     {
         GameObject newRobot = Instantiate(sphereRobot, aiPos.position, aiPos.rotation);
-        newRobot.GetComponent<SphereOverride>().player = gameObject;
         Destroy(aiPos.gameObject);
         gameObject.SetActive(false);
 

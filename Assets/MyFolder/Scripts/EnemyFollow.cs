@@ -11,20 +11,19 @@ public class EnemyFollow : MonoBehaviour
     public string walk;
     private bool isWalking;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
+        //if object has animations
         if (anim != null) Animations();
-        float distance = Vector3.Distance(transform.position, target.transform.position);
-        if(distance > agent.stoppingDistance)
+        //Make object go towards player
+        if(agent.remainingDistance <  agent.stoppingDistance)
         {
             agent.SetDestination(target.transform.position);
             isWalking = true;
@@ -32,7 +31,7 @@ public class EnemyFollow : MonoBehaviour
         else isWalking = false;
     }
 
-    void Animations()
+    private void Animations()
     {
         anim.SetBool(walk, isWalking);
     }

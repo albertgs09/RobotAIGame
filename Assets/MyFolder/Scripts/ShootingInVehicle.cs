@@ -13,7 +13,6 @@ public class ShootingInVehicle : MonoBehaviour
     {
         checkTargets = GetComponent<CheckTargets>();
     }
-    // Update is called once per frame
     private void Update()
     {
         timeBetweenShot += Time.deltaTime;
@@ -27,13 +26,13 @@ public class ShootingInVehicle : MonoBehaviour
     private void Fire()
     {
         if (checkTargets != null)
-        {
-           target = checkTargets.CheckClosestTarget();
-        }
-        foreach(Transform barrel in barrels)
+            target = checkTargets.CheckClosestTarget();
+        //Instantiates a projectile to each barrel 
+        foreach (Transform barrel in barrels)
         {
             GameObject rocket = Instantiate(projectiles, barrel.position, barrel.rotation);
 
+            //if a rocket, then adds target to rocket script
             if (projectiles.name == "Rockets")
                 if (target != null) rocket.GetComponent<Rocket>().target = target;
         }

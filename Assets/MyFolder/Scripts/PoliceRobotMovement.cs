@@ -12,8 +12,7 @@ public class PoliceRobotMovement : MonoBehaviour
     private float attackTime, deathTime;
     private bool near, dead;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
@@ -21,8 +20,7 @@ public class PoliceRobotMovement : MonoBehaviour
         target = GameObject.Find("Player");
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
         if(!dead) Move();
         else
@@ -38,12 +36,14 @@ public class PoliceRobotMovement : MonoBehaviour
         }
     }
 
-    void Move()
+    private void Move()
     {
+        //gets distance between to objects
         float distance = Vector3.Distance(transform.position, target.transform.position);
         if (distance >= agent.stoppingDistance + 3) near = false;
         else near = true;
 
+        //sets destination and animation
         if (distance >= agent.stoppingDistance + 3 && !agent.isStopped)
         {
             agent.SetDestination(target.transform.position);
@@ -51,6 +51,7 @@ public class PoliceRobotMovement : MonoBehaviour
         }
         else
         {
+            //sets up attack function
             agent.isStopped = true;
             anim.SetBool("IsWalking", false);
             transform.LookAt(target.transform);
@@ -58,7 +59,7 @@ public class PoliceRobotMovement : MonoBehaviour
         }
     }
 
-   void Attack()
+   private void Attack()
     {
         if (near)
         {
@@ -72,7 +73,7 @@ public class PoliceRobotMovement : MonoBehaviour
         }
     }
 
-    void MoveAI()
+    private void MoveAI()
     {
         //Tied to attack animation
         agent.isStopped = !agent.isStopped;
