@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AIMRobot : MonoBehaviour
+public class AimWithRaycast : MonoBehaviour
 {
     public Transform aimPoint;
     private Vector3 hitPosition;

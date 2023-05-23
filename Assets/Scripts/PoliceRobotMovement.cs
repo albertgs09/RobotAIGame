@@ -17,7 +17,7 @@ public class PoliceRobotMovement : MonoBehaviour
         anim = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
         shooting = GetComponent<ShootingForRobots>();
-        target = GameObject.Find("Player");
+        target = GameObject.FindWithTag("Player");
     }
 
     private void Update()
